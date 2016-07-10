@@ -19,7 +19,7 @@ http://gamebuino.com/wiki/index.php?title=Games
 
 
 ## Controls
-Gamebuino exist C Button. C Button of Arduboy is A + B.
+Gamebuino exist C Button. C Button of Arduboy is Left + Right.
 
 
 ## Technical information
