@@ -3,7 +3,7 @@ Gamebuino Library for Arduboy
 
 ## Description
 Arduboy can play Gamebuino. But probably all game don't work.
-It support Gamebuino library.
+It support only Gamebuino library.
 unsupport is SD card Library and etc.
 
 
