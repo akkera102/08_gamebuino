@@ -201,14 +201,14 @@ byte chooseLevel(){
         if(curPick > NUMLEVELS){
           curPick = NUMLEVELS;
         }
-        refreshLevelMenu(curPick);
+        drawLevelMenu(curPick);
       }
       if(gb.buttons.pressed(BTN_LEFT)){
         curPick--;
         if(curPick < 1){
           curPick = 1;
         }
-        refreshLevelMenu(curPick);
+        drawLevelMenu(curPick);
       }
       if(gb.buttons.pressed(BTN_A)){
         break;
