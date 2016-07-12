@@ -7,6 +7,8 @@
 #define NUM_CHANNELS 0		// 0-4
 
 //---------------------------------------------------------------------------
+// DEFAULT SET
+
 // DISPLAY_ROT NOROT
 // ENABLE_GUI 1
 // ENABLE_BITMAPS 1

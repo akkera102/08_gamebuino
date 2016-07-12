@@ -25,8 +25,6 @@
 // LCD size
 #define LCDWIDTH			84
 #define LCDHEIGHT			48
-#define LCDHEIGHT_NOROT		48
-#define LCDWIDTH_NOROT		84
 
 #define swap(a, b)			{ int8_t t = a; a = b; b = t; }
 
@@ -35,6 +33,9 @@ class Display : public Print
 {
 public:
 	void     begin();
+
+	void     command();
+	void     data();
 
 	uint8_t* getBuffer();
 	void     setContrast(uint8_t val);
@@ -85,6 +86,12 @@ public:
 private:
 	uint8_t* font;
 	uint8_t  color, bgcolor;
+
+	volatile uint8_t* pCs;
+	volatile uint8_t* pDc;
+	uint8_t           csMask;
+	uint8_t           dcMask;
+
 };
 
 #endif

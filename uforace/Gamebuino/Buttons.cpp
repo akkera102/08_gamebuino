@@ -50,13 +50,29 @@ void Buttons::update()
 		pinMode(pins[thisButton], INPUT);
 	}
 
-	if(pressed(BTN_RIGHT) && pressed(BTN_LEFT))
+	// Arduboy C button
+	if((states[BTN_LEFT]  > 0 && states[BTN_LEFT]  != 0xFF) &&
+	   (states[BTN_RIGHT] > 0 && states[BTN_RIGHT] != 0xFF))
 	{
-		states[BTN_C] = 1;
+		states[BTN_C]++;
 	}
 	else
 	{
-		states[BTN_C] = 0;
+		if(states[BTN_C] == 0)
+		{
+			// EMPTY
+		}
+		else
+		{
+			if(states[BTN_C] == 0xFF)
+			{
+				states[BTN_C] = 0;
+			}
+			else
+			{
+				states[BTN_C] = 0xFF;
+			}
+		}
 	}
 }
 //---------------------------------------------------------------------------

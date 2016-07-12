@@ -25,7 +25,7 @@ void Display::begin()
 {
 	color    = BLACK;
 	bgcolor  = WHITE;
-    textWrap = true;
+	textWrap = true;
 	fontSize = 1;
 
 	setFont(font3x5);
@@ -50,22 +50,38 @@ void Display::begin()
 	digitalWrite(SCR_RST, HIGH);
 
 	// setup the ports we need to talk to the OLED
-	volatile uint8_t* pCs = portOutputRegister(digitalPinToPort(SCR_CS));
-	volatile uint8_t* pDc = portOutputRegister(digitalPinToPort(SCR_DC));
-	uint8_t csMask = digitalPinToBitMask(SCR_CS);
-	uint8_t dcMask = digitalPinToBitMask(SCR_DC);
-
-	// command Mode
-	*pCs |=  csMask;
-	*pDc &= ~dcMask;
-	*pCs &= ~csMask;
+	pCs    = portOutputRegister(digitalPinToPort(SCR_CS));
+	pDc    = portOutputRegister(digitalPinToPort(SCR_DC));
+	csMask = digitalPinToBitMask(SCR_CS);
+	dcMask = digitalPinToBitMask(SCR_DC);
 
 	// send boot Program
+	command();
+
 	for(uint8_t i=0; i<sizeof(bootProgram); i++)
 	{
 		SPI.transfer(__LPM(bootProgram + i));
 	}
 
+	// screen clear
+	data();
+
+	for(uint16_t i=0; i<128*64/8; i++)
+	{
+		SPI.transfer(0x00);
+	}
+}
+//---------------------------------------------------------------------------
+void Display::command()
+{
+	// command Mode
+	*pCs |=  csMask;
+	*pDc &= ~dcMask;
+	*pCs &= ~csMask;
+}
+//---------------------------------------------------------------------------
+void Display::data()
+{
 	// data Mode
 	*pDc |=  dcMask;
 	*pCs &= ~csMask;
@@ -91,27 +107,23 @@ void Display::update(void)
 {
 	frameCount++;
 
-	uint16_t i, j;
-	uint16_t k = 0;
-
-	for(i=0; i<6; i++)
+	for(uint8_t page=0; page<6; page++)
 	{
-		for(j=0; j<84; j++)
-		{
-			SPI.transfer(_displayBuffer[k++]);
-		}
+		command();
 
-		for(j=0; j<128-84; j++)
-		{
-			SPI.transfer(0x00);
-		}
-	}
+		SPI.transfer(0x22);
+		SPI.transfer(1 + page);
+		SPI.transfer(7);
 
-	for(i=0; i<2; i++)
-	{
-		for(j=0; j<128; j++)
+		SPI.transfer(0x21);
+		SPI.transfer(((128 - 84) / 2) - 1);
+		SPI.transfer(127);
+
+		data();
+
+		for(uint8_t col=0; col<=LCDWIDTH-1; col++)
 		{
-			SPI.transfer(0x00);
+			SPI.transfer(_displayBuffer[(LCDWIDTH * page) + col]);
 		}
 	}
 }
@@ -157,11 +169,11 @@ void Display::drawPixel(int8_t x, int8_t y)
 	// white or black
 	if(c == WHITE)
 	{
-		_displayBuffer[x + (y / 8) * LCDWIDTH_NOROT] &= ~_BV(y % 8);
+		_displayBuffer[x + (y / 8) * LCDWIDTH] &= ~_BV(y % 8);
 	}
 	else
 	{
-		_displayBuffer[x + (y / 8) * LCDWIDTH_NOROT] |=  _BV(y % 8);
+		_displayBuffer[x + (y / 8) * LCDWIDTH] |=  _BV(y % 8);
 	}
 }
 //---------------------------------------------------------------------------

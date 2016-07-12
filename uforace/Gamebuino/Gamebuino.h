@@ -4,6 +4,7 @@
 #include <Arduino.h>
 #include <avr/pgmspace.h>
 #include <avr/sleep.h>
+#include <avr/power.h>
 #include "settings.c"
 #include "Backlight.h"
 #include "Display.h"
@@ -11,6 +12,8 @@
 #include "Battery.h"
 #include "Sound.h"
 
+#define ADC_VOLTAGE (_BV(REFS0) | _BV(MUX4)  | _BV(MUX3) | _BV(MUX2) | _BV(MUX1))
+#define ADC_TEMP    (_BV(REFS0) | _BV(REFS1) | _BV(MUX2) | _BV(MUX1) | _BV(MUX0))
 
 class Gamebuino
 {
@@ -21,7 +24,7 @@ public:
 	Sound     sound;
 	Display   display;
 
-    void     begin();
+	void     begin();
 	void     titleScreen(const __FlashStringHelper* name, const uint8_t *logo);
 	void     titleScreen(const __FlashStringHelper* name);
 	void     titleScreen(const uint8_t* logo);
@@ -30,6 +33,7 @@ public:
 
 	void     setFrameRate(uint8_t fps);
 	void     pickRandomSeed();
+	uint16_t rawADC(byte adc_bits);
 	uint8_t  getCpuLoad();
 	uint16_t getFreeRam();
 
@@ -44,20 +48,21 @@ public:
 
 	boolean  collidePointRect(int16_t x1, int16_t y1 ,int16_t x2 ,int16_t y2, int16_t w, int16_t h);
 	boolean  collideRectRect(int16_t x1, int16_t y1, int16_t w1, int16_t h1 ,int16_t x2 ,int16_t y2, int16_t w2, int16_t h2);
-    boolean  collideBitmapBitmap(int16_t x1, int16_t y1, const uint8_t* b1, int16_t x2, int16_t y2, const uint8_t* b2);
+	boolean  collideBitmapBitmap(int16_t x1, int16_t y1, const uint8_t* b1, int16_t x2, int16_t y2, const uint8_t* b2);
 
-    uint32_t frameCount;
+	uint32_t frameCount;
 	uint32_t frameStartMicros, frameEndMicros;
 	uint16_t frameDurationMicros;
 	uint8_t  startMenuTimer;
 
 private:
+	void     updatePopup();
+	void     displayBattery();
+
 	uint8_t  timePerFrame;
 	uint32_t nextFrameMillis;
-	void     updatePopup();
-	const    __FlashStringHelper* popupText;
 	uint8_t  popupTimeLeft;
-	void     displayBattery();
+	const    __FlashStringHelper* popupText;
 };
 
 #endif

@@ -471,7 +471,7 @@ void loop(){
 
 
 void initGame(byte retry){
-  if(!retry) gb.titleScreen(F("   "), logo);
+  if(!retry) gb.titleScreen(F("   "));
 
   highscore = EEPROM.read(0) & 0x00FF; //LSB
   highscore += (EEPROM.read(1) << 8) & 0xFF00; //MSB

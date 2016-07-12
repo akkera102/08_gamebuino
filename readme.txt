@@ -1,14 +1,16 @@
 Gamebuino Library for Arduboy
 
+
 ## Description
 Arduboy can play Gamebuino. But probably all game don't work.
-It support Gamebuino.h, Gamebuino.cpp. unsupport is SD card Library and etc.
+It support Gamebuino library.
+unsupport is SD card Library and etc.
 
 
 ## Games
 I tested few game. thank you awesome game! :)
 
-- 101 STARSHIPS by zoglu(sketch size is too big. I del sound. sry.)
+- 101 STARSHIPS by zoglu(sketch size is too big. I del logo and sound. sry.)
 - CRABATOR by rodot
 - UFO-RACE by rodot
 - INVADERS by yoda
@@ -33,8 +35,19 @@ after:
 
     #include "Gamebuino/Gamebuino.h"
 
-IDE push compile button. probably it can running.
+probably it can run.
 
 
 ## Development
 compiler : windows Arduino IDE 1.6.9
+
+
+## Licence
+
+Library: LGPL3
+https://github.com/Rodot/Gamebuino
+
+Game: Please check with each game.
+http://gamebuino.com/wiki/index.php?title=Games
+
+
