@@ -1,6 +1,8 @@
 Gamebuino Library for Arduboy
 
 
+!! Arduino IDE 1.6.10 can not compile. pls use 1.6.9 !! 
+
 ## Description
 Arduboy can play Gamebuino. But probably all game don't work.
 It support only Gamebuino library.
