@@ -95,7 +95,7 @@ void Gamebuino::titleScreen(const __FlashStringHelper*  name, const uint8_t *log
 				uint8_t logoOffset = pgm_read_byte(name) ? display.fontHeight : 0;
 
 				// draw graphics
-//				display.drawBitmap(0,0, gamebuinoLogo);
+				display.drawBitmap(0,0, gamebuinoLogo);
 				if(logo)
 				{
 					display.drawBitmap(0, 12+logoOffset, logo);

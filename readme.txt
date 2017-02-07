@@ -10,7 +10,7 @@ unsupport is SD card Library and etc.
 ## Games
 I tested few game. thank you awesome game! :)
 
-- 101 STARSHIPS by zoglu(sketch size is too big. I del logo and music. sry.)
+- 101 STARSHIPS by zoglu(sketch size is too big. I del logo. sry.)
 - AGEDDON by wuuff
 - CRABATOR by rodot
 - UFO-RACE by rodot
@@ -42,9 +42,11 @@ probably it can run.
 
 ## Development
 compiler : windows Arduino IDE 1.6.12
+           1.8.0 is only use 101 STARSHIPS
 
 
 ## History
+v1.02 2017/02/07    fix 101 STARSHIPS(add music)
 v1.01 2016/10/28    fix compile problem
                     add Armageddon Game
 v1.00 2016/--/--    first version
