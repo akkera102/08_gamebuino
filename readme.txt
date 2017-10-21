@@ -41,11 +41,11 @@ probably it can run.
 
 
 ## Development
-compiler : windows Arduino IDE 1.6.12
-           1.8.0 is only use 101 STARSHIPS
+compiler : windows Arduino IDE 1.8.5
 
 
 ## History
+v1.03 2017/10/21    bit fix. clean up souce code
 v1.02 2017/02/07    fix 101 STARSHIPS(add music)
 v1.01 2016/10/28    fix compile problem
                     add Armageddon Game

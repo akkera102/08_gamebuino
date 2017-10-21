@@ -18,7 +18,7 @@ const uint8_t bootProgram[] PROGMEM = {
 };
 
 extern const uint8_t font3x5[] PROGMEM;
-uint8_t _displayBuffer[512];
+uint8_t _displayBuffer[504];
 
 //---------------------------------------------------------------------------
 void Display::begin()
@@ -116,7 +116,7 @@ void Display::update(void)
 		SPI.transfer(7);
 
 		SPI.transfer(0x21);
-		SPI.transfer(((128 - 84) / 2) - 1);
+		SPI.transfer((128 - 84) / 2);
 		SPI.transfer(127);
 
 		data();
