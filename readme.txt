@@ -19,7 +19,7 @@ I tested few game. thank you awesome game! :)
 - WHG by sorunome
 - JEZZBALL by rackhamlenoir
 - BIGBLACKBOX by studiocraftapps
-- DIGGER by sutchig(sketch size is too big. no sound)
+- DIGGER by sutchig
 - SOLITAIRE by aoneill
 
 
