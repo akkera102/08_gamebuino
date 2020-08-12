@@ -23,8 +23,14 @@
 #define FLIPVH				3
 
 // LCD size
-#define LCDWIDTH			84
+/*#define LCDWIDTH			84
 #define LCDHEIGHT			48
+*/
+
+// LCD size
+#define LCDWIDTH      128
+#define LCDHEIGHT     64
+
 
 #define swap(a, b)			{ int8_t t = a; a = b; b = t; }
 
@@ -44,14 +50,14 @@ public:
 
 	void     setColor(int8_t c);
 	void     setColor(int8_t c, int8_t bg);
-	void     drawPixel(int8_t x, int8_t y);
+	void     drawPixel(uint8_t  x, uint8_t  y);
 	uint8_t  getPixel(int8_t x, int8_t y);
 
 	void     drawLine(int8_t x0, int8_t y0, int8_t x1, int8_t y1);
 	void     drawFastVLine(int8_t x, int8_t y, int8_t h);
-	void     drawFastHLine(int8_t x, int8_t y, int8_t w);
+	void     drawFastHLine(uint8_t  x, uint8_t y, uint8_t w);
 	void     drawRect(int8_t x, int8_t y, int8_t w, int8_t h);
-	void     fillRect(int8_t x, int8_t y, int8_t w, int8_t h);
+	void     fillRect(uint8_t  x, uint8_t  y, uint8_t  w, uint8_t  h);
 	void     fillScreen(uint8_t color);
 
 	void     drawCircle(int8_t x0, int8_t y0, int8_t r);

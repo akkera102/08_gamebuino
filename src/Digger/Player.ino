@@ -30,12 +30,12 @@ void handlePlayer(char xoff, char yoff) {
   }
 }
 void die() {
-  byte x = cursor_x; 
+  byte x = cursor_x;
   byte y = cursor_y;
   world[x][y] = DEATH;
   dead = true;
   lives--;
-  
+
 }
 
 void updateCursor() {

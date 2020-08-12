@@ -4,9 +4,7 @@
 //---------------------------------------------------------------------------
 // ADRUBOY MODE
 // SETTINGS YOU CAN EDIT
-#define NUM_CHANNELS 0		// 0-4
-#define EXTENDED_NOTE_RANGE 1
-
+#define NUM_CHANNELS 3		// 0-4
 
 //---------------------------------------------------------------------------
 // DEFAULT SET
@@ -15,6 +13,7 @@
 // ENABLE_GUI 1
 // ENABLE_BITMAPS 1
 // ENABLE_GRAYSCALE 1
+// EXTENDED_NOTE_RANGE 1
 // ENABLE_BATTERY 0
 // ENABLE_BACKLIGHT 0
 

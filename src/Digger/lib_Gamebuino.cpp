@@ -106,7 +106,7 @@ void Gamebuino::titleScreen(const __FlashStringHelper*  name, const uint8_t *log
 
 				//A button
 				display.cursorX = LCDWIDTH  - display.fontWidth  * 3 - 1;
-				display.cursorY = LCDHEIGHT - display.fontHeight * 3 - 3;
+				display.cursorY = LCDHEIGHT - display.fontHeight * 3 - 2;
 
 				if((frameCount / 16) % 2)
 				{
@@ -131,9 +131,9 @@ void Gamebuino::titleScreen(const __FlashStringHelper*  name, const uint8_t *log
 				}
 
 				// C button
-				display.cursorX = LCDWIDTH - display.fontWidth * 3 - 1;
+				/*display.cursorX = LCDWIDTH - display.fontWidth * 3 - 1;
 				display.cursorY++;
-				display.println(F("\27SD"));
+				display.println(F("\27SD"));*/
 
 				// toggle volume when B is pressed
 				if(buttons.pressed(BTN_B))
@@ -322,7 +322,7 @@ int8_t Gamebuino::menu(const char* const* items, uint8_t length)
 				}
 
 				// center the menu on the active item
-				targetY = -display.fontHeight * activeItem + (display.fontHeight+4);
+				targetY = -display.fontHeight * activeItem + (LCDHEIGHT/2 - display.fontHeight/2);
 			}
 			else
 			{

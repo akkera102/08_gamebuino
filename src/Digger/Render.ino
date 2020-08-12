@@ -29,7 +29,13 @@ void drawWorld() {
   gb.display.print(diams_need);
   gb.display.print(F(" \03:"));
   gb.display.print(lives);
-  gb.display.print(F(" L:"));
+  gb.display.cursorX = LCDWIDTH-gb.display.fontWidth*10;
+  gb.display.print(F(" LEVEL:"));
+  if(curLevel<9)
+  gb.display.print(F("00"));
+  else
+  if(curLevel<99)
+  gb.display.print(F("0"));
   gb.display.print(curLevel + 1);
 }
 

@@ -50,6 +50,7 @@ compiler : windows Arduino IDE 1.8.13
 
 
 ## History
+v1.04 2020/08/12    fork DIGGER arduboy version.thank you eried!
 v1.03 2020/08/12    fix eeprom problem
                     add some games
                     PAQMAN,WHG fps 30 -> 20

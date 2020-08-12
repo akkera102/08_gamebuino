@@ -20,7 +20,7 @@
 
 #define NUM_SPRITES 21
 
-#define NUM_LEVELS 152
+#define NUM_LEVELS 130
 
 #define WORLD_W 20
 #define WORLD_H 14
@@ -39,7 +39,7 @@
 #define TYPE_LT 192
 
 //gamestates
-#define MENULENGTH 7
+#define MENULENGTH 6
 
 #define PAUSED 1
 #define RUNNING 0

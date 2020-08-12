@@ -30,10 +30,10 @@ void falling(byte x, byte y, byte sprite) {
   if ( (world[x][y] & FALLINGSTATE) > 0) {
     switch (world[x][y + 1] & SPRITEMASK) {
       case PLAYER: die(); break;
-      case MONSTER_D: monster_die(x, y + 1);return; break;
-      case MONSTER_U: monster_die(x, y + 1);return; break;
-      case MONSTER_L: monster_die(x, y + 1);return; break;
-      case MONSTER_R: monster_die(x, y + 1);return; break;
+      case MONSTER_D: monster_die(x, y + 1); return; break;
+      case MONSTER_U: monster_die(x, y + 1); return; break;
+      case MONSTER_L: monster_die(x, y + 1); return; break;
+      case MONSTER_R: monster_die(x, y + 1); return; break;
       default: break;
     }
   }

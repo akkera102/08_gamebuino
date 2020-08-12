@@ -26,7 +26,7 @@ const char* const menu[MENULENGTH] PROGMEM = {
   strSave,
   lvlUp,
   lvlDown,
-  strMode,
+ // strMode,
 };
 
 byte world[WORLD_W][WORLD_H];
@@ -122,9 +122,9 @@ void loop() {
         updateCursor();
         updatePhysics();
         drawWorld();
-        if (lives <1 || lives>LIVES) {
+        if (lives < 1 || lives > LIVES) {
           //curLevel=NUM_LEVELS-2;
-          gamestate=GAMEOVER;
+          gamestate = GAMEOVER;
         }
         break;
       case GAMEOVER:
@@ -177,7 +177,6 @@ void initWorld(byte _level) {
       setTile(getBits(_level, CODELENGTH));
       worldpos++;
     }
-
   }
 }
 
@@ -209,7 +208,7 @@ void setTile( byte sprite) {
   }
 }
 void nextLevel() {
-  if (curLevel < NUM_LEVELS-3) {
+  if (curLevel < NUM_LEVELS - 3) {
     (gamemode == EASY) ? cureasy++ : curhard++;
     maxeasy = max(maxeasy, cureasy);
     maxhard = max(maxhard, curhard);
@@ -219,45 +218,38 @@ void nextLevel() {
 }
 
 void loadEEPROM() {
-  if (EEPROM.read(EEPROM_SAVE_START+0) != EEPROMTOKEN1 || EEPROM.read(EEPROM_SAVE_START+1) != EEPROMTOKEN2 || EEPROM.read(EEPROM_SAVE_START+2) != EEPROMTOKEN3) {
+  if (EEPROM.read(EEPROM_SAVE_START + 0) != EEPROMTOKEN1 || EEPROM.read(EEPROM_SAVE_START + 1) != EEPROMTOKEN2 || EEPROM.read(EEPROM_SAVE_START + 2) != EEPROMTOKEN3) {
     cleanEEPROM;
     return;
   }
 
-  gamemode = EEPROM.read(EEPROM_SAVE_START+3);
-  cureasy = EEPROM.read(EEPROM_SAVE_START+4);
-  maxeasy = EEPROM.read(EEPROM_SAVE_START+5);
-  lives   = EEPROM.read(EEPROM_SAVE_START+6);
-  curhard = EEPROM.read(EEPROM_SAVE_START+8);
-  maxhard = EEPROM.read(EEPROM_SAVE_START+9);
+  gamemode = EEPROM.read(EEPROM_SAVE_START + 3);
+  cureasy = EEPROM.read(EEPROM_SAVE_START + 4);
+  maxeasy = EEPROM.read(EEPROM_SAVE_START + 5);
+  lives   = EEPROM.read(EEPROM_SAVE_START + 6);
+  curhard = EEPROM.read(EEPROM_SAVE_START + 8);
+  maxhard = EEPROM.read(EEPROM_SAVE_START + 9);
   maxeasy = max(maxeasy, cureasy);
   maxhard = max(maxhard, curhard);
   curLevel = (gamemode == EASY) ? cureasy : curhard;
   maxlevel = (gamemode == EASY) ? maxeasy : maxhard;
 }
 void cleanEEPROM() {
-//  for (int i = 0; i < 1024; i++) {
   for (int i = 0; i < 10; i++) {
-    if (EEPROM.read(EEPROM_SAVE_START+i)) {
-      EEPROM.write(EEPROM_SAVE_START+i, 0);
+    if (EEPROM.read(EEPROM_SAVE_START + i)) {
+      EEPROM.write(EEPROM_SAVE_START + i, 0);
     }
   }
 }
 
 void saveEEPROM() {
-  EEPROM.write(EEPROM_SAVE_START+0, EEPROMTOKEN1);
-  EEPROM.write(EEPROM_SAVE_START+1, EEPROMTOKEN2);
-  EEPROM.write(EEPROM_SAVE_START+2, EEPROMTOKEN3);
-  EEPROM.write(EEPROM_SAVE_START+3, gamemode);
-  EEPROM.write(EEPROM_SAVE_START+4, cureasy);
-  EEPROM.write(EEPROM_SAVE_START+5, maxeasy);
-  EEPROM.write(EEPROM_SAVE_START+6, lives);
-  EEPROM.write(EEPROM_SAVE_START+8, curhard);
-  EEPROM.write(EEPROM_SAVE_START+9, maxhard);
-
-
+  EEPROM.write(EEPROM_SAVE_START + 0, EEPROMTOKEN1);
+  EEPROM.write(EEPROM_SAVE_START + 1, EEPROMTOKEN2);
+  EEPROM.write(EEPROM_SAVE_START + 2, EEPROMTOKEN3);
+  EEPROM.write(EEPROM_SAVE_START + 3, gamemode);
+  EEPROM.write(EEPROM_SAVE_START + 4, cureasy);
+  EEPROM.write(EEPROM_SAVE_START + 5, maxeasy);
+  EEPROM.write(EEPROM_SAVE_START + 6, lives);
+  EEPROM.write(EEPROM_SAVE_START + 8, curhard);
+  EEPROM.write(EEPROM_SAVE_START + 9, maxhard);
 }
-
-/*
-"C:\Program Files\Arduino\hardware\tools\avr/bin/avr-objdump" -h -S "C:\Users\xxxxxxx\AppData\Local\Temp\buildxxxxxxxxx.tmp\Digger.cpp.elf" > digger.lst
-*/
