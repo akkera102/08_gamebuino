@@ -244,10 +244,10 @@ void shakeScreen(){
 void loadHighscore(){
   for(byte thisScore = 0; thisScore < RANKMAX; thisScore++){
     for(byte i=0; i<NAMELENGTH; i++){
-      name[thisScore][i] = EEPROM.read(i + thisScore*(NAMELENGTH+2));
+      name[thisScore][i] = EEPROM.read(EEPROM_SAVE_START + i + thisScore*(NAMELENGTH+2));
     }
-    highscore[thisScore] = EEPROM.read(NAMELENGTH + thisScore*(NAMELENGTH+2)) & 0x00FF; //LSB
-    highscore[thisScore] += (EEPROM.read(NAMELENGTH+1 + thisScore*(NAMELENGTH+2)) << 8) & 0xFF00; //MSB
+    highscore[thisScore] = EEPROM.read(EEPROM_SAVE_START + NAMELENGTH + thisScore*(NAMELENGTH+2)) & 0x00FF; //LSB
+    highscore[thisScore] += (EEPROM.read(EEPROM_SAVE_START + NAMELENGTH+1 + thisScore*(NAMELENGTH+2)) << 8) & 0xFF00; //MSB
     highscore[thisScore] = (highscore[thisScore]==0xFFFF) ? 0 : highscore[thisScore];
   }
 }  
@@ -275,10 +275,10 @@ void saveHighscore(){
   }
   for(byte thisScore = 0; thisScore < RANKMAX; thisScore++){
     for(byte i=0; i<NAMELENGTH; i++){
-      EEPROM.write(i + thisScore*(NAMELENGTH+2), name[thisScore][i]);
+      EEPROM.write(EEPROM_SAVE_START + i + thisScore*(NAMELENGTH+2), name[thisScore][i]);
     }
-    EEPROM.write(NAMELENGTH + thisScore*(NAMELENGTH+2), highscore[thisScore] & 0x00FF); //LSB
-    EEPROM.write(NAMELENGTH+1 + thisScore*(NAMELENGTH+2), (highscore[thisScore] >> 8) & 0x00FF); //MSB
+    EEPROM.write(EEPROM_SAVE_START + NAMELENGTH + thisScore*(NAMELENGTH+2), highscore[thisScore] & 0x00FF); //LSB
+    EEPROM.write(EEPROM_SAVE_START + NAMELENGTH+1 + thisScore*(NAMELENGTH+2), (highscore[thisScore] >> 8) & 0x00FF); //MSB
   }
   displayHighScores();
 }

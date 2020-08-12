@@ -3,6 +3,9 @@
 #include <avr/pgmspace.h>
 #include <EEPROM.h>
 #include "lib_Gamebuino.h"
+
+#define EEPROM_SAVE_START   16
+
 Gamebuino gb;
 
 const byte armageddon[] PROGMEM = {64,36,

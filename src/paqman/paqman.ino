@@ -1,6 +1,9 @@
 #include <SPI.h>
 #include "lib_Gamebuino.h"
 Gamebuino gb;
+
+#define EEPROM_SAVE_START   16
+
 //----------------------------------------------------------------------    
 //                               P A Q M A N
 //                              by Yoda Zhang
@@ -151,7 +154,8 @@ extern const byte PROGMEM mazeimage[];
 // setup
 void setup(){
   gb.begin();
-  gb.setFrameRate(30);
+//  gb.setFrameRate(30);
+  gb.setFrameRate(20);
   gb.titleScreen(F("    Yoda's"),gamelogo);
   gb.pickRandomSeed();
   gamestatus="title";

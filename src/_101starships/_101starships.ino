@@ -1,6 +1,9 @@
 #include <SPI.h>
 #include <EEPROM.h>
 #include "lib_Gamebuino.h"
+
+#define EEPROM_SAVE_START   16
+
 #define MAX_TIRS 20
 #define MAX_TIRS_ENNEMIS 35
 #define MAX_ENNEMIS 8
@@ -473,8 +476,8 @@ void loop(){
 void initGame(byte retry){
   if(!retry) gb.titleScreen(F("   "));
 
-  highscore = EEPROM.read(0) & 0x00FF; //LSB
-  highscore += (EEPROM.read(1) << 8) & 0xFF00; //MSB
+  highscore = EEPROM.read(EEPROM_SAVE_START+0) & 0x00FF; //LSB
+  highscore += (EEPROM.read(EEPROM_SAVE_START+1) << 8) & 0xFF00; //MSB
   if(highscore > 60000){
     highscore = 0; 
   }

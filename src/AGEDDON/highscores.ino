@@ -9,11 +9,11 @@ void loadHighscores(){
   for( uint8_t entry = 0; entry < NUM_HIGHSCORES; entry++ ){
     for( uint8_t offset = 0; offset < ENTRY_SIZE; offset++ ){
       if( offset < NAME_SIZE ){
-        names[entry][offset] = EEPROM.read( ENTRY_SIZE * entry + offset );
+        names[entry][offset] = EEPROM.read( EEPROM_SAVE_START + ENTRY_SIZE * entry + offset );
       }else{
         uint8_t* addr = (uint8_t*) &highscores[entry];
         addr+=offset-NAME_SIZE;
-        *addr = EEPROM.read( ENTRY_SIZE * entry + offset );
+        *addr = EEPROM.read( EEPROM_SAVE_START + ENTRY_SIZE * entry + offset );
       }
     }
   }
@@ -48,11 +48,11 @@ void saveHighscore(uint32_t score, char* who){
   for( uint8_t entry = 0; entry < NUM_HIGHSCORES; entry++ ){
     for( uint8_t offset = 0; offset < ENTRY_SIZE; offset++ ){
       if( offset < NAME_SIZE ){
-        EEPROM.write( ENTRY_SIZE * entry + offset, names[entry][offset] );
+        EEPROM.write( EEPROM_SAVE_START + ENTRY_SIZE * entry + offset, names[entry][offset] );
       }else{
         uint8_t* addr = (uint8_t*) &highscores[entry];
         addr+=offset-NAME_SIZE;
-        EEPROM.write( ENTRY_SIZE * entry + offset, *addr );
+        EEPROM.write( EEPROM_SAVE_START + ENTRY_SIZE * entry + offset, *addr );
       }
     }
   }

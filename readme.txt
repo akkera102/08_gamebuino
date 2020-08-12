@@ -10,13 +10,18 @@ unsupport is SD card Library and etc.
 ## Games
 I tested few game. thank you awesome game! :)
 
-- 101 STARSHIPS by zoglu(sketch size is too big. I del logo. sry.)
+- 101 STARSHIPS by zoglu(sketch size is too big. no logo image)
 - AGEDDON by wuuff
 - CRABATOR by rodot
 - UFO-RACE by rodot
 - INVADERS by yoda
 - PAQMAN by yoda
 - WHG by sorunome
+- JEZZBALL by rackhamlenoir
+- BIGBLACKBOX by studiocraftapps
+- DIGGER by sutchig(sketch size is too big. no sound)
+- SOLITAIRE by aoneill
+
 
 http://gamebuino.com/wiki/index.php?title=Games
 
@@ -37,14 +42,17 @@ after:
 
     #include "lib_Gamebuino.h"
 
-probably it can run.
+3. If you don't hear sound, change NUM_CHANNELS in lib_settings.c.
 
 
 ## Development
-compiler : windows Arduino IDE 1.8.5
+compiler : windows Arduino IDE 1.8.13
 
 
 ## History
+v1.03 2020/08/12    fix eeprom problem
+                    add some games
+                    PAQMAN,WHG fps 30 -> 20
 v1.03 2017/10/21    bit fix. clean up souce code
 v1.02 2017/02/07    fix 101 STARSHIPS(add music)
 v1.01 2016/10/28    fix compile problem
@@ -58,6 +66,6 @@ Library: LGPL3
 https://github.com/Rodot/Gamebuino
 
 Game: Please check with each game.
-http://gamebuino.com/wiki/index.php?title=Games
+http://legacy.gamebuino.com/wiki/index.php?title=Games
 
 

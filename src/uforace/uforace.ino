@@ -2,6 +2,8 @@
 #include "lib_Gamebuino.h"
 Gamebuino gb;
 
+#define EEPROM_SAVE_START   16
+
 #include <EEPROM.h>
 #include <avr/pgmspace.h>
 

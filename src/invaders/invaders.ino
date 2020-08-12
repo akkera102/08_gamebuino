@@ -1,6 +1,9 @@
 #include <SPI.h>
 #include "lib_Gamebuino.h"
 Gamebuino gb;
+
+#define EEPROM_SAVE_START   16
+
 //----------------------------------------------------------------------    
 //                             I N V A D E R S
 //                              by Yoda Zhang

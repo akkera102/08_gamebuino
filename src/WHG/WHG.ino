@@ -3,6 +3,8 @@
 #include <EEPROM.h>
 Gamebuino gb;
 
+#define EEPROM_SAVE_START   16
+
 #define MAPHEADER 3
 #define MAPTILESIZE 6
 #define TILETOPX(x) x*MAPTILESIZE + 1
@@ -157,7 +159,8 @@ void doTitleScreen(byte doTitle){
     if(doTitle){
       gb.titleScreen(logo);
       gb.battery.show = false;
-      gb.setFrameRate(30);
+//      gb.setFrameRate(30);
+      gb.setFrameRate(20);
       gb.display.persistence = false;
     }
     doTitle = true;
@@ -170,7 +173,7 @@ void refreshLevelMenu(byte curPick){
     gb.display.print(" ");
   }
   gb.display.print(curPick);
-  byte done = EEPROM.read(curPick-1);
+  byte done = EEPROM.read(EEPROM_SAVE_START + curPick-1);
   gb.display.setColor(WHITE);
   gb.display.fillRect(48,11,10,10); // erase old icon
   gb.display.fillRect(0,24,48,5); // erase old moves display
@@ -267,7 +270,7 @@ void loop() {
       }
       if(win){
         gb.sound.playOK();
-        EEPROM.write(curLevelNum,1);
+        EEPROM.write(EEPROM_SAVE_START + curLevelNum,1);
         destroyMap();
         if(++curLevelNum >= NUMLEVELS){
           curLevelNum--;

@@ -4,7 +4,7 @@
 //---------------------------------------------------------------------------
 // ADRUBOY MODE
 // SETTINGS YOU CAN EDIT
-#define NUM_CHANNELS 1		// 0-4
+#define NUM_CHANNELS 4		// 0-4
 #define EXTENDED_NOTE_RANGE 1
 
 

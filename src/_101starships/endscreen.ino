@@ -18,8 +18,8 @@ void updateEndScreen(){
     score_saved = 1;
     if(score > highscore){
       highscore = score;
-      EEPROM.write(0, highscore & 0x00FF); //LSB
-      EEPROM.write(1, (highscore >> 8) & 0x00FF); //MSB
+      EEPROM.write(EEPROM_SAVE_START+0, highscore & 0x00FF); //LSB
+      EEPROM.write(EEPROM_SAVE_START+1, (highscore >> 8) & 0x00FF); //MSB
       new_highscore = 1;
     }
 
