@@ -23,7 +23,7 @@ I tested few game. thank you awesome game! :)
 - SOLITAIRE by aoneill
 
 
-http://gamebuino.com/wiki/index.php?title=Games
+http://legacy.gamebuino.com/wiki/index.php?title=Games
 
 
 ## Controls
